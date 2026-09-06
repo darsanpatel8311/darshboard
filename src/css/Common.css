@@ -258,7 +258,7 @@ p strong {
 }
 
 label em {
-  color: var(--red);
+  color: var(--global-palette1);
   display: inline-block;
   font-style: normal;
   vertical-align: top;
@@ -348,6 +348,34 @@ svg * {
   transition: .5s cubic-bezier(.44, 0, .56, 1) 0s;
 }
 
+/* CMS-provided interface icons arrive with fixed fill/stroke attributes. */
+.top_icon,
+.arrow_icon,
+.counter_icon,
+.counter_title_icon,
+.benefit_icon,
+.btn_icon {
+  color: var(--global-palette2);
+}
+
+.top_icon svg [fill]:not([fill="none"]),
+.arrow_icon svg [fill]:not([fill="none"]),
+.counter_icon svg [fill]:not([fill="none"]),
+.counter_title_icon svg [fill]:not([fill="none"]),
+.benefit_icon svg [fill]:not([fill="none"]),
+.btn_icon svg [fill]:not([fill="none"]) {
+  fill: var(--global-palette2) !important;
+}
+
+.top_icon svg [stroke]:not([stroke="none"]),
+.arrow_icon svg [stroke]:not([stroke="none"]),
+.counter_icon svg [stroke]:not([stroke="none"]),
+.counter_title_icon svg [stroke]:not([stroke="none"]),
+.benefit_icon svg [stroke]:not([stroke="none"]),
+.btn_icon svg [stroke]:not([stroke="none"]) {
+  stroke: var(--global-palette2) !important;
+}
+
 /* START COMMON CSS */
 
 body h1,
@@ -428,26 +456,26 @@ body .h6 {
   height: 0.5208333333333333vw;
   border-radius: 100%;
   position: relative;
-  background: rgb(109, 211, 61);
+  background: rgb(var(--theme-success-rgb));
   display: inline-block;
   animation: animate-pulse 3s linear infinite;
 }
 
 @keyframes animate-pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(109, 211, 61, 0.7), 0 0 0 0 rgba(109, 211, 61, 0.7);
+    box-shadow: 0 0 0 0 rgba(var(--theme-success-rgb), 0.7), 0 0 0 0 rgba(var(--theme-success-rgb), 0.7);
   }
 
   40% {
-    box-shadow: 0 0 0 0.5208333333333333vw rgba(109, 211, 61, 0.0), 0 0 0 0 rgba(109, 211, 61, 0.7);
+    box-shadow: 0 0 0 0.5208333333333333vw rgba(var(--theme-success-rgb), 0), 0 0 0 0 rgba(var(--theme-success-rgb), 0.7);
   }
 
   80% {
-    box-shadow: 0 0 0 0.5208333333333333vw rgba(109, 211, 61, 0.0), 0 0 0 0.32552083333333337vw rgba(109, 211, 61, 0);
+    box-shadow: 0 0 0 0.5208333333333333vw rgba(var(--theme-success-rgb), 0), 0 0 0 0.32552083333333337vw rgba(var(--theme-success-rgb), 0);
   }
 
   100% {
-    box-shadow: 0 0 0 0 rgba(109, 211, 61, 0.0), 0 0 0 0.32552083333333337vw rgba(109, 211, 61, 0);
+    box-shadow: 0 0 0 0 rgba(var(--theme-success-rgb), 0), 0 0 0 0.32552083333333337vw rgba(var(--theme-success-rgb), 0);
   }
 
 }
@@ -505,7 +533,7 @@ body .h6 {
 
 .skills_row .comm_inner::after {
   content: "";
-  background: linear-gradient(180deg, rgba(84, 84, 84, 0) 0%, rgb(20, 20, 20) 100%);
+  background: linear-gradient(180deg, rgba(var(--theme-palette14-rgb), 0) 0%, var(--global-palette9) 100%);
   left: 0;
   right: 0;
   position: absolute;
@@ -561,13 +589,176 @@ body .h6 {
 .comm_work {
   background-color: var(--global-palette10);
   border-radius: 6.510416666666667vw;
-  box-shadow: inset 0.13020833333333331vw 0.26041666666666663vw 0.13020833333333331vw #3339, inset 0 -0.13020833333333331vw 0.06510416666666666vw #1e1e1e;
+  box-shadow: inset 0.13020833333333331vw 0.26041666666666663vw 0.13020833333333331vw rgba(var(--theme-palette14-rgb), 0.6), inset 0 -0.13020833333333331vw 0.06510416666666666vw var(--global-palette8);
   gap: 0.6vw;
   padding: 0.390625vw 1.3020833333333335vw;
 }
 
 /* END WEB FONT */
+:root,
+:root[data-theme="default"] {
+  --theme-palette1-rgb: 208, 50, 22;
+  --theme-palette2-rgb: 232, 75, 47;
+  --theme-palette3-rgb: 230, 230, 230;
+  --theme-palette4-rgb: 25, 25, 25;
+  --theme-palette5-rgb: 15, 15, 15;
+  --theme-palette6-rgb: 255, 255, 255;
+  --theme-palette7-rgb: 204, 204, 204;
+  --theme-palette8-rgb: 30, 30, 30;
+  --theme-palette9-rgb: 20, 20, 20;
+  --theme-palette10-rgb: 38, 38, 38;
+  --theme-palette11-rgb: 242, 242, 242;
+  --theme-palette12-rgb: 153, 153, 153;
+  --theme-palette13-rgb: 45, 45, 45;
+  --theme-palette14-rgb: 56, 56, 56;
+  --theme-palette15-rgb: 36, 36, 36;
+  --theme-palette16-rgb: 10, 10, 10;
+  --theme-primary-deep-rgb: 185, 44, 19;
+  --theme-primary-glow-rgb: 237, 115, 93;
+  --theme-primary-glow-strong-rgb: 235, 95, 70;
+  --theme-success-rgb: 109, 211, 61;
+}
+
+:root[data-theme="ocean"] {
+  --theme-palette1-rgb: 28, 111, 182;
+  --theme-palette2-rgb: 74, 168, 255;
+  --theme-palette3-rgb: 223, 241, 255;
+  --theme-palette4-rgb: 18, 30, 44;
+  --theme-palette5-rgb: 8, 16, 26;
+  --theme-palette6-rgb: 245, 251, 255;
+  --theme-palette7-rgb: 195, 214, 231;
+  --theme-palette8-rgb: 30, 47, 66;
+  --theme-palette9-rgb: 16, 26, 40;
+  --theme-palette10-rgb: 28, 43, 59;
+  --theme-palette11-rgb: 241, 248, 255;
+  --theme-palette12-rgb: 140, 171, 198;
+  --theme-palette13-rgb: 39, 58, 79;
+  --theme-palette14-rgb: 53, 80, 104;
+  --theme-palette15-rgb: 26, 39, 53;
+  --theme-palette16-rgb: 6, 12, 20;
+  --theme-primary-deep-rgb: 18, 88, 148;
+  --theme-primary-glow-rgb: 122, 194, 255;
+  --theme-primary-glow-strong-rgb: 94, 181, 255;
+  --theme-success-rgb: 62, 214, 164;
+}
+
+:root[data-theme="violet"] {
+  --theme-palette1-rgb: 132, 75, 224;
+  --theme-palette2-rgb: 171, 118, 255;
+  --theme-palette3-rgb: 242, 234, 255;
+  --theme-palette4-rgb: 29, 22, 38;
+  --theme-palette5-rgb: 18, 13, 24;
+  --theme-palette6-rgb: 252, 248, 255;
+  --theme-palette7-rgb: 214, 202, 228;
+  --theme-palette8-rgb: 41, 31, 54;
+  --theme-palette9-rgb: 24, 19, 33;
+  --theme-palette10-rgb: 36, 28, 47;
+  --theme-palette11-rgb: 247, 240, 255;
+  --theme-palette12-rgb: 167, 150, 192;
+  --theme-palette13-rgb: 50, 38, 66;
+  --theme-palette14-rgb: 69, 53, 90;
+  --theme-palette15-rgb: 33, 25, 43;
+  --theme-palette16-rgb: 12, 8, 18;
+  --theme-primary-deep-rgb: 112, 57, 195;
+  --theme-primary-glow-rgb: 205, 171, 255;
+  --theme-primary-glow-strong-rgb: 190, 147, 255;
+  --theme-success-rgb: 110, 214, 153;
+}
+
+:root[data-theme="forest"] {
+  --theme-palette1-rgb: 29, 147, 94;
+  --theme-palette2-rgb: 71, 201, 139;
+  --theme-palette3-rgb: 230, 255, 241;
+  --theme-palette4-rgb: 23, 35, 29;
+  --theme-palette5-rgb: 13, 21, 18;
+  --theme-palette6-rgb: 248, 255, 251;
+  --theme-palette7-rgb: 193, 219, 203;
+  --theme-palette8-rgb: 33, 49, 41;
+  --theme-palette9-rgb: 18, 28, 23;
+  --theme-palette10-rgb: 30, 43, 36;
+  --theme-palette11-rgb: 239, 250, 244;
+  --theme-palette12-rgb: 138, 169, 151;
+  --theme-palette13-rgb: 41, 58, 49;
+  --theme-palette14-rgb: 57, 81, 68;
+  --theme-palette15-rgb: 28, 40, 33;
+  --theme-palette16-rgb: 9, 14, 12;
+  --theme-primary-deep-rgb: 22, 117, 74;
+  --theme-primary-glow-rgb: 133, 228, 179;
+  --theme-primary-glow-strong-rgb: 105, 216, 160;
+  --theme-success-rgb: 133, 226, 88;
+}
+
+:root[data-theme="amber"] {
+  --theme-palette1-rgb: 204, 127, 18;
+  --theme-palette2-rgb: 242, 166, 58;
+  --theme-palette3-rgb: 255, 244, 221;
+  --theme-palette4-rgb: 36, 26, 18;
+  --theme-palette5-rgb: 23, 17, 11;
+  --theme-palette6-rgb: 255, 250, 240;
+  --theme-palette7-rgb: 223, 205, 177;
+  --theme-palette8-rgb: 49, 37, 26;
+  --theme-palette9-rgb: 29, 22, 15;
+  --theme-palette10-rgb: 42, 31, 21;
+  --theme-palette11-rgb: 255, 247, 229;
+  --theme-palette12-rgb: 180, 152, 112;
+  --theme-palette13-rgb: 59, 44, 30;
+  --theme-palette14-rgb: 83, 62, 41;
+  --theme-palette15-rgb: 38, 28, 19;
+  --theme-palette16-rgb: 12, 9, 6;
+  --theme-primary-deep-rgb: 171, 104, 12;
+  --theme-primary-glow-rgb: 255, 204, 129;
+  --theme-primary-glow-strong-rgb: 248, 184, 88;
+  --theme-success-rgb: 128, 214, 105;
+}
+
+:root[data-theme="crimson"] {
+  --theme-palette1-rgb: 199, 48, 73;
+  --theme-palette2-rgb: 240, 93, 108;
+  --theme-palette3-rgb: 255, 238, 241;
+  --theme-palette4-rgb: 36, 22, 26;
+  --theme-palette5-rgb: 23, 13, 17;
+  --theme-palette6-rgb: 255, 247, 248;
+  --theme-palette7-rgb: 224, 198, 202;
+  --theme-palette8-rgb: 50, 31, 36;
+  --theme-palette9-rgb: 29, 18, 21;
+  --theme-palette10-rgb: 43, 27, 31;
+  --theme-palette11-rgb: 250, 239, 241;
+  --theme-palette12-rgb: 180, 145, 152;
+  --theme-palette13-rgb: 60, 38, 44;
+  --theme-palette14-rgb: 84, 55, 62;
+  --theme-palette15-rgb: 39, 24, 28;
+  --theme-palette16-rgb: 12, 7, 9;
+  --theme-primary-deep-rgb: 164, 33, 56;
+  --theme-primary-glow-rgb: 255, 152, 164;
+  --theme-primary-glow-strong-rgb: 249, 122, 136;
+  --theme-success-rgb: 121, 221, 142;
+}
+
+:root[data-theme="mono"] {
+  --theme-palette1-rgb: 163, 163, 163;
+  --theme-palette2-rgb: 207, 207, 207;
+  --theme-palette3-rgb: 245, 245, 245;
+  --theme-palette4-rgb: 27, 27, 27;
+  --theme-palette5-rgb: 15, 15, 15;
+  --theme-palette6-rgb: 255, 255, 255;
+  --theme-palette7-rgb: 211, 211, 211;
+  --theme-palette8-rgb: 35, 35, 35;
+  --theme-palette9-rgb: 22, 22, 22;
+  --theme-palette10-rgb: 41, 41, 41;
+  --theme-palette11-rgb: 247, 247, 247;
+  --theme-palette12-rgb: 162, 162, 162;
+  --theme-palette13-rgb: 48, 48, 48;
+  --theme-palette14-rgb: 66, 66, 66;
+  --theme-palette15-rgb: 33, 33, 33;
+  --theme-palette16-rgb: 9, 9, 9;
+  --theme-primary-deep-rgb: 120, 120, 120;
+  --theme-primary-glow-rgb: 233, 233, 233;
+  --theme-primary-glow-strong-rgb: 219, 219, 219;
+  --theme-success-rgb: 175, 175, 175;
+}
+
 :root {
+  color-scheme: dark;
   --f45: 1.7578125vw;
   --f35: 1.6927083333333333vw;
   --f28: 1.5625vw;
@@ -578,25 +769,22 @@ body .h6 {
   --f14: 0.911vw;
 
   --space_60: 3.90625vw;
-  --global-palette1: rgb(208, 50, 22);
-  --global-palette2: rgb(232, 75, 47);
-  --global-palette3: rgb(230, 230, 230);
-  --global-palette4: rgb(25, 25, 25);
-  --global-palette5: rgb(15, 15, 15);
-  --global-palette6: rgb(255, 255, 255);
-  --global-palette7: rgb(204, 204, 204);
-  --global-palette8: rgb(30, 30, 30);
-  --global-palette9: rgb(20, 20, 20);
-  --global-palette10: rgb(38, 38, 38);
-  --global-palette11: rgb(242, 242, 242);
-  --global-palette12: rgb(153, 153, 153);
-  --global-palette13: rgb(45, 45, 45);
-  --global-palette14: rgb(56, 56, 56);
-  --global-palette15: rgb(36, 36, 36);
-  --global-palette16: rgb(10, 10, 10);
-
-
-
+  --global-palette1: rgb(var(--theme-palette1-rgb));
+  --global-palette2: rgb(var(--theme-palette2-rgb));
+  --global-palette3: rgb(var(--theme-palette3-rgb));
+  --global-palette4: rgb(var(--theme-palette4-rgb));
+  --global-palette5: rgb(var(--theme-palette5-rgb));
+  --global-palette6: rgb(var(--theme-palette6-rgb));
+  --global-palette7: rgb(var(--theme-palette7-rgb));
+  --global-palette8: rgb(var(--theme-palette8-rgb));
+  --global-palette9: rgb(var(--theme-palette9-rgb));
+  --global-palette10: rgb(var(--theme-palette10-rgb));
+  --global-palette11: rgb(var(--theme-palette11-rgb));
+  --global-palette12: rgb(var(--theme-palette12-rgb));
+  --global-palette13: rgb(var(--theme-palette13-rgb));
+  --global-palette14: rgb(var(--theme-palette14-rgb));
+  --global-palette15: rgb(var(--theme-palette15-rgb));
+  --global-palette16: rgb(var(--theme-palette16-rgb));
   --manrope-font: "Manrope";
 }
 
@@ -686,7 +874,7 @@ body .h6 {
 
   .comm_work {
     border-radius: 100px;
-    box-shadow: inset 2px 4px 2px #3339, inset 0 -2px 1px #1e1e1e;
+    box-shadow: inset 2px 4px 2px rgba(var(--theme-palette14-rgb), 0.6), inset 0 -2px 1px var(--global-palette8);
     gap: 10px;
     padding: 6px 14px 6px 16px;
   }
@@ -707,19 +895,19 @@ body .h6 {
 
   @keyframes animate-pulse {
     0% {
-      box-shadow: 0 0 0 0 rgba(109, 211, 61, 0.7), 0 0 0 0 rgba(109, 211, 61, 0.7);
+      box-shadow: 0 0 0 0 rgba(var(--theme-success-rgb), 0.7), 0 0 0 0 rgba(var(--theme-success-rgb), 0.7);
     }
 
     40% {
-      box-shadow: 0 0 0 8px rgba(109, 211, 61, 0.0), 0 0 0 0 rgba(109, 211, 61, 0.7);
+      box-shadow: 0 0 0 8px rgba(var(--theme-success-rgb), 0), 0 0 0 0 rgba(var(--theme-success-rgb), 0.7);
     }
 
     80% {
-      box-shadow: 0 0 0 8px rgba(109, 211, 61, 0.0), 0 0 0 5px rgba(109, 211, 61, 0);
+      box-shadow: 0 0 0 8px rgba(var(--theme-success-rgb), 0), 0 0 0 5px rgba(var(--theme-success-rgb), 0);
     }
 
     100% {
-      box-shadow: 0 0 0 0 rgba(109, 211, 61, 0.0), 0 0 0 5px rgba(109, 211, 61, 0);
+      box-shadow: 0 0 0 0 rgba(var(--theme-success-rgb), 0), 0 0 0 5px rgba(var(--theme-success-rgb), 0);
     }
 
   }

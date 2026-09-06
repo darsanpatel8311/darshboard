@@ -4,7 +4,9 @@ import axios from 'axios';
 import { Helmet } from 'react-helmet';
 
 import Header from './components/Header';
+import Chatbot from './components/Chatbot';
 import Page from './components/Page';
+import { ThemeProvider } from './theme/ThemeContext';
 import './App.css';
 
 const AppSkeleton = () => (
@@ -94,100 +96,103 @@ function App() {
   const aboutPage = siteData.pages.find((p) => p.slug === 'about-me');
 
   return (
-    <Router>
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            '@context': 'https://schema.org',
-            '@graph': [
-              {
-                '@type': 'WebSite',
-                '@id': 'https://darshboard.com/#website',
-                url: 'https://darshboard.com/',
-                name: 'Darshboard',
-                description: 'Darshan Patel - Frontend Developer with 4+ years of experience building responsive React.js & WordPress websites.',
-                publisher: {
-                  '@id': 'https://darshboard.com/#organization'
+    <ThemeProvider>
+      <Router>
+        <Helmet>
+          <script type="application/ld+json">
+            {JSON.stringify({
+              '@context': 'https://schema.org',
+              '@graph': [
+                {
+                  '@type': 'WebSite',
+                  '@id': 'https://darshboard.com/#website',
+                  url: 'https://darshboard.com/',
+                  name: 'Darshboard',
+                  description: 'Darshan Patel - Frontend Developer with 4+ years of experience building responsive React.js & WordPress websites.',
+                  publisher: {
+                    '@id': 'https://darshboard.com/#organization'
+                  }
+                },
+                {
+                  '@type': 'Organization',
+                  '@id': 'https://darshboard.com/#organization',
+                  name: 'Darshboard',
+                  url: 'https://darshboard.com/',
+                  logo: {
+                    '@type': 'ImageObject',
+                    url: 'https://darshboard.com/wp-content/uploads/2025/06/darshboard_logo.svg'
+                  },
+                  sameAs: [
+                    'https://www.linkedin.com/in/pateldarshan8311',
+                    'https://github.com/pateldarshan8311',
+                    'https://www.youtube.com/@darshboard',
+                    'https://www.behance.net/pateldarshan8311',
+                    'https://dribbble.com/pateldarshan8311',
+                    'https://stackoverflow.com/users/7642929/pateldarshan8311',
+                    'https://www.quora.com/profile/Darshan-Patel-2422'
+                  ]
+                },
+                {
+                  '@type': 'Person',
+                  '@id': 'https://darshboard.com/#person',
+                  name: 'Darshan Patel',
+                  url: 'https://darshboard.com/',
+                  image: {
+                    '@type': 'ImageObject',
+                    url: 'https://darshboard.com/wp-content/uploads/2025/06/darshboard_logo.svg'
+                  },
+                  jobTitle: 'Frontend Developer',
+                  worksFor: {
+                    '@id': 'https://darshboard.com/#organization'
+                  },
+                  sameAs: [
+                    'https://www.linkedin.com/in/pateldarshan8311',
+                    'https://github.com/pateldarshan8311',
+                    'https://www.youtube.com/@darshboard',
+                    'https://www.behance.net/pateldarshan8311',
+                    'https://dribbble.com/pateldarshan8311',
+                    'https://stackoverflow.com/users/7642929/pateldarshan8311',
+                    'https://www.quora.com/profile/Darshan-Patel-2422'
+                  ]
                 }
-              },
-              {
-                '@type': 'Organization',
-                '@id': 'https://darshboard.com/#organization',
-                name: 'Darshboard',
-                url: 'https://darshboard.com/',
-                logo: {
-                  '@type': 'ImageObject',
-                  url: 'https://darshboard.com/wp-content/uploads/2025/06/darshboard_logo.svg'
-                },
-                sameAs: [
-                  'https://www.linkedin.com/in/pateldarshan8311',
-                  'https://github.com/pateldarshan8311',
-                  'https://www.youtube.com/@darshboard',
-                  'https://www.behance.net/pateldarshan8311',
-                  'https://dribbble.com/pateldarshan8311',
-                  'https://stackoverflow.com/users/7642929/pateldarshan8311',
-                  'https://www.quora.com/profile/Darshan-Patel-2422'
-                ]
-              },
-              {
-                '@type': 'Person',
-                '@id': 'https://darshboard.com/#person',
-                name: 'Darshan Patel',
-                url: 'https://darshboard.com/',
-                image: {
-                  '@type': 'ImageObject',
-                  url: 'https://darshboard.com/wp-content/uploads/2025/06/darshboard_logo.svg'
-                },
-                jobTitle: 'Frontend Developer',
-                worksFor: {
-                  '@id': 'https://darshboard.com/#organization'
-                },
-                sameAs: [
-                  'https://www.linkedin.com/in/pateldarshan8311',
-                  'https://github.com/pateldarshan8311',
-                  'https://www.youtube.com/@darshboard',
-                  'https://www.behance.net/pateldarshan8311',
-                  'https://dribbble.com/pateldarshan8311',
-                  'https://stackoverflow.com/users/7642929/pateldarshan8311',
-                  'https://www.quora.com/profile/Darshan-Patel-2422'
-                ]
-              }
-            ]
-          })}
-        </script>
-      </Helmet>
+              ]
+            })}
+          </script>
+        </Helmet>
 
-      <Header
-        menuItems={siteData.main_menu}
-        loading={loading}
-        logo={siteData.logo}
-      />
+        <Header
+          menuItems={siteData.main_menu}
+          loading={loading}
+          logo={siteData.logo}
+        />
 
-      <main role="main" id="main-content">
-        {loading ? (
-          <AppSkeleton />
-        ) : (
-          <Routes>
-            {aboutPage && (
-              <>
-                <Route path="/" element={<Page pageData={aboutPage} />} />
-                <Route path="/about-me" element={<Page pageData={aboutPage} />} />
-              </>
-            )}
+        <main role="main" id="main-content">
+          {loading ? (
+            <AppSkeleton />
+          ) : (
+            <Routes>
+              {aboutPage && (
+                <>
+                  <Route path="/" element={<Page pageData={aboutPage} />} />
+                  <Route path="/about-me" element={<Page pageData={aboutPage} />} />
+                </>
+              )}
 
-            {siteData.pages
-              .filter((page) => page.slug !== 'about-me')
-              .map((page) => (
-                <Route
-                  key={page.id}
-                  path={`/${page.slug}`}
-                  element={<Page pageData={page} />}
-                />
-              ))}
-          </Routes>
-        )}
-      </main>
-    </Router>
+              {siteData.pages
+                .filter((page) => page.slug !== 'about-me')
+                .map((page) => (
+                  <Route
+                    key={page.id}
+                    path={`/${page.slug}`}
+                    element={<Page pageData={page} />}
+                  />
+                ))}
+            </Routes>
+          )}
+        </main>
+        <Chatbot />
+      </Router>
+    </ThemeProvider>
   );
 }
 

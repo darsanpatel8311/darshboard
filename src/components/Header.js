@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import ImageComponent from './ImageComponent';
+import ThemeSwitcher from './ThemeSwitcher';
 import '../css/Common.css';
 import '../css/Header.css';
 
@@ -103,18 +104,42 @@ useEffect(() => {
           ) : null}
 
           {/* Email Section */}
-          <div className="d_mail">
-            {loading ? (
-              <div className="d_mail_box d_mail_box--loading" aria-hidden="true">
-                <span className="header-skeleton header-skeleton--icon" />
-                <span className="header-skeleton header-skeleton--text" />
-              </div>
-            ) : (
-              <a href="mailto:hello@darshboard.com" className="d_mail_box">
-                <ImageComponent imageId={54} />
-                <span>hello@darshboard.com</span>
-              </a>
-            )}
+          <div className="d_header_actions">
+           
+            <div className="d_mail">
+              {loading ? (
+                <div className="d_mail_box d_mail_box--loading d_header_action_button" aria-hidden="true">
+                  <span className="header-skeleton header-skeleton--icon" />
+                  <span className="header-skeleton header-skeleton--text" />
+                </div>
+              ) : (
+                <a
+                  href="mailto:hello@darshboard.com"
+                  className="d_mail_box d_header_action_button"
+                  aria-label="Email hello@darshboard.com"
+                  data-tooltip="hello@darshboard.com"
+                >
+                  <ImageComponent imageId={54} />
+                </a>
+              )}
+            </div>
+            <ThemeSwitcher />
+
+             <a
+              className="d_mail_box d_header_action_button"
+              href="/wp-content/uploads/2026/09/Darshan-Patel-CV.pdf"
+              download="Darshan-Patel-CV.pdf"
+              aria-label="Download Darshan Patel CV as a PDF"
+              data-tooltip="Download CV"
+            >
+              <span className="d_cv_download__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 3v11" />
+                  <path d="m8 10 4 4 4-4" />
+                  <path d="M5 21h14" />
+                </svg>
+              </span>
+            </a>
           </div>
 
         </div>
