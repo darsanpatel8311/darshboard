@@ -353,7 +353,7 @@
     backdrop-filter: blur(16px);
     z-index: 10001;
     overflow-y: auto;
-    max-height: min(60vh, 420px);
+    max-height: 60vh;
 }
 
 .theme_switcher__panel.is-open {
