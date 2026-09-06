@@ -104,7 +104,7 @@ export const themeMap = {
   },
   forest: {
     id: 'forest',
-    label: '&nbsp;',
+    label: 'Forest',
     description: 'Botanical greens with darker pine-tinted panels.',
     metaColor: '#0d1512',
     preview: {

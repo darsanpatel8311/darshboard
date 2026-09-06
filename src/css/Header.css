@@ -232,6 +232,7 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
+
     .theme_switcher__trigger:hover::before,
     .theme_switcher__trigger:hover::after,
     .d_header_action_button:hover::before,
@@ -290,8 +291,8 @@
     line-height: 1.2;
 }
 
-.d_header_actions > .d_header_action_button,
-.d_header_actions .d_mail > .d_header_action_button,
+.d_header_actions>.d_header_action_button,
+.d_header_actions .d_mail>.d_header_action_button,
 .theme_switcher__trigger {
     width: 3.38vw;
     height: 3.38vw;
@@ -351,6 +352,8 @@
     box-shadow: 0 0 0 0.13vw var(--global-palette8), 0 1.302vw 2.604vw rgba(var(--theme-palette16-rgb), 0.48);
     backdrop-filter: blur(16px);
     z-index: 10001;
+    overflow-y: auto;
+    max-height: min(60vh, 420px);
 }
 
 .theme_switcher__panel.is-open {
@@ -461,7 +464,7 @@
         justify-content: center;
     }
 
-    .d_mail > .d_mail_box span {
+    .d_mail>.d_mail_box span {
         display: none;
     }
 
@@ -484,8 +487,12 @@
     }
 
     .d_header_actions {
-        margin-left: auto;
-        gap: 10px;
+        gap: 15px;
+    }
+
+    .theme_switcher__trigger {
+
+        box-shadow: inset 1px 2px 3px 0px rgba(var(--theme-palette13-rgb), 0.8), inset -1px -2px 3px 0px var(--global-palette9), 0px 0px 0px 2px var(--global-palette5);
     }
 
     .d_main_menu {
@@ -509,6 +516,10 @@
     .d_hamburger_menu.active+.d_main_menu {
         opacity: 1;
         visibility: visible;
+    }
+    .theme_switcher__trigger,
+    .d_header_actions .d_mail_box {
+        border-radius: 8px;
     }
 
     .d_mail_box {
@@ -544,8 +555,8 @@
         padding: 14px;
     }
 
-    .d_header_actions > .d_header_action_button,
-    .d_header_actions .d_mail > .d_header_action_button,
+    .d_header_actions>.d_header_action_button,
+    .d_header_actions .d_mail>.d_header_action_button,
     .theme_switcher__trigger {
         width: 48px;
         height: 48px;
@@ -639,8 +650,8 @@
         transform: rotate(0deg);
         transition: .5s ease-in-out;
         cursor: pointer;
-        width: 100%;
-        height: 100%;
+        width: 22px;
+        height: 22px;
         align-content: center;
     }
 
@@ -715,14 +726,10 @@
         gap: 8px;
     }
 
-    .d_mail {
-        display: none;
-    }
-
     .d_hamburger_menu,
     .theme_switcher__trigger,
-    .d_header_actions > .d_header_action_button,
-    .d_header_actions .d_mail > .d_header_action_button {
+    .d_header_actions>.d_header_action_button,
+    .d_header_actions .d_mail>.d_header_action_button {
         width: 44px;
         height: 44px;
         min-width: 44px;
