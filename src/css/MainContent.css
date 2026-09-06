@@ -47,7 +47,7 @@ a:hover .btn_txt {
 .profile_img {
     border-radius: 1.3020833333333335vw;
     box-shadow: 0 0 0 0.06510416666666666vw var(--global-palette8), 0 0 0 0.26041666666666663vw var(--global-palette15);
-    max-width: 10.416666666666668vw;
+    max-width: 9.416666666666668vw;
     overflow: hidden;
     position: relative;
 }
@@ -65,13 +65,9 @@ a:hover .btn_txt {
 .profile_content {
     width: 100%;
     gap: 0.5208333333333333vw;
-    max-width: calc(100% - 1.3020833333333335vw - 10.416666666666668vw);
+    max-width: calc(100% - 1.3020833333333335vw - 9.416666666666668vw);
 }
-.about_description{
-font-size: 1.0416666666666665vw;
-  font-size: var(--f16);
-  line-height: 1.5;
-}
+
 .profile_content h1 {
     margin-bottom: 0;
 }
@@ -1046,7 +1042,11 @@ font-size: 1.0416666666666665vw;
     .verticle-slider::after {
         left: calc(60.2% - 0.06510416666666666vw);
     }
-
+.about_description{
+font-size: 1.0416666666666665vw;
+  font-size: var(--f16);
+  line-height: 1.5;
+}
     .stack_icon_list .stack_item {
         flex: unset;
         width: 100%;

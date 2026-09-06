@@ -4,11 +4,17 @@ const StacksComponent = ({ stackData }) => {
     if (!stackData) return null;
 
     const {
+        stack_icon_box_list,
+        stack_topbar,
+    } = stackData;
+
+    // The stack heading fields are supplied by ACF as the `stack_topbar` group.
+    // Keep the root-level fallback so existing flat payloads continue to render.
+    const {
         stack_top_icon,
         stack_top_title,
         stack_top_text,
-        stack_icon_box_list,
-    } = stackData;
+    } = stack_topbar || stackData;
 
     return (
         <div className="comm_inner d_flex flex_column no_gap">
